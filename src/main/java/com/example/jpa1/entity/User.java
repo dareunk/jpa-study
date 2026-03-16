@@ -1,5 +1,7 @@
 package com.example.jpa1.entity;
 
+import com.example.jpa1.embedded.Address;
+import com.example.jpa1.embedded.BillingInfo;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -42,4 +44,31 @@ public class User {
         tickets.remove(ticket);
         ticket.setUser(null);
     }
+
+    //추가
+    @Embedded
+    private Address address;
+
+    public void changeAddress(Address address) {
+        this.address = address;
+    }
+
+    public User(String name, String email, Address address) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+    }
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "city", column = @Column(name = "company_city")),
+            @AttributeOverride(name = "street", column = @Column(name = "company_street")),
+            @AttributeOverride(name = "zipCode", column = @Column(name = "company_zipcode"))
+    })
+    private Address companyAddress;
+
+    @ElementCollection
+    private List<BillingInfo> billingInfo = new ArrayList<>();
+
+
 }

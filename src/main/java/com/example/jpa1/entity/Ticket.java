@@ -26,7 +26,7 @@ public class Ticket {
     private LocalDateTime lastModified;
 
     @Setter
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -47,6 +47,11 @@ public class Ticket {
 
     public void changeSeat(Seat seat) {
         this.seat = seat;
+    }
+
+    //추가
+    public void addUser(User user){
+        this.user = user;
     }
 
 }

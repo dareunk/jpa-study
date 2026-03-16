@@ -1,5 +1,6 @@
 package com.example.jpa1.entity;
 
+import com.example.jpa1.embedded.Address;
 import com.example.jpa1.embedded.PerformanceInfo;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -40,4 +41,7 @@ public class Performance {
         this.performanceInfo = performanceInfo;
     }
 
+    //추가
+    @Embedded
+    private Address address;
 }
