@@ -1,10 +1,12 @@
 package com.example.jpaproject.embedded;
 
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Embeddable
 @Getter
 @NoArgsConstructor
 public class PerformanceInfo {
